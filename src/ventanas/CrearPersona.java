@@ -144,7 +144,7 @@ public class CrearPersona extends javax.swing.JFrame {
         
         String p = edadSpinner.getValue().toString();
         Persona P = new Persona(cedulaTextField.getText(),Integer.parseInt(p) , nombreTextField.getText());
-        listado.setPersona(P);
+        listado.addPersona(P);
     }//GEN-LAST:event_crearPersonaActionPerformed
 
     /**

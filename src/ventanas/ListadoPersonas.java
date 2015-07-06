@@ -6,7 +6,6 @@
 package Ventanas;
 
 import Clases.Listado;
-import Clases.Persona;
 import javax.swing.DefaultListModel;
 
 

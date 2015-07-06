@@ -19,10 +19,10 @@ public class Listado {
   private final List<Persona> listadoPersonas;   
   
     public Listado() {
-        listadoPersonas = (List<Persona>) new ArrayList<Persona>();
+        listadoPersonas = new ArrayList();
     }
 
-  public void setPersona(Persona P){
+  public void addPersona(Persona P){
       listadoPersonas.add(P);
       
   }
