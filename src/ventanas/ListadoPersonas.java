@@ -13,16 +13,18 @@ public class ListadoPersonas extends javax.swing.JFrame {
 
     public static Listado listado;
     
-    public ListadoPersonas(Listado L) {
-        initComponents();
-        listado = L;
-        DefaultListModel modelo = new DefaultListModel();
+    public void actualizarComponente(){
+      DefaultListModel modelo = new DefaultListModel();
         for (int i =0; i <listado.getSize();i++){
             modelo.addElement(listado.getPersona(i));
             this.listaPersonas.setModel(modelo);
         }
     }
-
+    public ListadoPersonas() {
+        initComponents();
+        listado = new Listado();
+       
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +39,11 @@ public class ListadoPersonas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(listaPersonas);
 
@@ -70,6 +77,10 @@ public class ListadoPersonas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -97,11 +108,12 @@ public class ListadoPersonas extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+       
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListadoPersonas(listado).setVisible(true);
+                new ListadoPersonas().setVisible(true);
             }
         });
     }

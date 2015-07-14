@@ -36,7 +36,6 @@ public class Listado {
       s+=  " " + p.getEdad();
       return s;
   }
-    
-
-    
+  
+  
 }

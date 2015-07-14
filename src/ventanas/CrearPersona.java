@@ -7,15 +7,17 @@ package Ventanas;
 
 import Clases.Listado;
 import Clases.Persona;
+import static Ventanas.ListadoPersonas.listado;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 
 public class CrearPersona extends javax.swing.JFrame {
-    public static Listado listado;
     /**
      * Creates new form CrearPersona
      */
+     ListadoPersonas x = new ListadoPersonas();
     public CrearPersona() {
-        listado = new Listado();
         initComponents();
     }
 
@@ -39,6 +41,7 @@ public class CrearPersona extends javax.swing.JFrame {
         verListado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Asignacion Java");
 
         jLabel1.setText("Nombre");
 
@@ -92,22 +95,22 @@ public class CrearPersona extends javax.swing.JFrame {
                                 .addComponent(cedulaTextField))
                             .addComponent(edadSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(crearPersona)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(verListado)
-                .addGap(30, 30, 30))
+                        .addGap(43, 43, 43)
+                        .addComponent(crearPersona)
+                        .addGap(78, 78, 78)
+                        .addComponent(verListado)))
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel4)
-                .addGap(38, 38, 38)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -134,10 +137,9 @@ public class CrearPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_crearPersonaMouseClicked
 
     private void verListadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verListadoActionPerformed
-        
-        ListadoPersonas x = new ListadoPersonas(listado);
+        x.actualizarComponente();
+        this.setVisible(false);
         x.setVisible(true);
-        dispose();
     }//GEN-LAST:event_verListadoActionPerformed
 
     private void crearPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPersonaActionPerformed
@@ -145,6 +147,9 @@ public class CrearPersona extends javax.swing.JFrame {
         String p = edadSpinner.getValue().toString();
         Persona P = new Persona(cedulaTextField.getText(),Integer.parseInt(p) , nombreTextField.getText());
         listado.addPersona(P);
+        JOptionPane.showMessageDialog(null,"Se ha agregado un nuevo registro ");
+        this.cedulaTextField.setText("");
+        this.nombreTextField.setText("");
     }//GEN-LAST:event_crearPersonaActionPerformed
 
     /**
